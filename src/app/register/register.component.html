@@ -1,0 +1,16 @@
+<div>
+    <p>Choose if you want to register as a dogsitter or want to register your dog</p>
+    <mat-radio-group>
+        <mat-radio-button value="dog" (click)="register('dog')" routerLink="dog">Dog</mat-radio-button>
+        <mat-radio-button value="sitter" (click)="register('sitter')" routerLink="sitter">Sitter</mat-radio-button>
+    </mat-radio-group>
+</div>
+
+<div *ngIf="isSelected('dog')">
+    <app-register-dog></app-register-dog>
+</div> 
+
+<div *ngIf="isSelected('sitter')">
+    <app-register-sitter></app-register-sitter>
+</div>
+

@@ -1,0 +1,30 @@
+<header>
+  <div style="text-align:center">
+      <mat-toolbar>
+        <h1>{{title}}</h1> 
+      </mat-toolbar>
+    </div>
+
+  <nav> 
+    <ul>
+
+        <!-- <mat-menu '#users'="matMenu">
+            <button mat-menu-item routerLink="dogs">Dog sitters
+            <button mat-menu-item routerLink="sitters">Sitters </button>
+        </mat-menu> -->
+
+        <button mat-button routerLink="home"> Home </button>
+        <button mat-button routerLink="login"> Login </button>
+        <button mat-button routerLink="register"> Register </button>
+        <button mat-button routerLink="users-list"> Users </button>
+        
+
+       <!--  <button mat-button matMenuTriggerFor="users">Users </button> -->
+  </ul>
+  </nav>
+  <br>
+</header>
+<br>
+
+<router-outlet></router-outlet>
+

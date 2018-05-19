@@ -1,0 +1,57 @@
+<form novalidate [formGroup]="registerSitterForm"
+  (submit)="onSubmit(registerSitterForm)">
+
+  <div>
+    <mat-form-field>
+      <mat-label>First name</mat-label>
+      <input matInput formControlName="firstname">
+      <mat-error *ngIf="registerSitterForm.controls.firstname.errors?.required && registerSitterForm.controls.firstname.touched">
+          Please fill out the first name
+      </mat-error> 
+    </mat-form-field>
+  </div>
+
+  <div>
+      <mat-form-field>
+        <mat-label>Last name</mat-label>
+        <input matInput formControlName="lastname">
+        <mat-error *ngIf="registerSitterForm.controls.lastname.errors?.required && registerSitterForm.controls.lastname.touched">
+            Please fill out the last name
+        </mat-error> 
+      </mat-form-field>
+    </div>
+
+  <div>
+      <mat-form-field>
+        <mat-label>Age</mat-label>
+        <input matInput formControlName="age">
+        <mat-error *ngIf="registerSitterForm.controls.age.errors?.required && registerSitterForm.controls.age.touched">
+            Please fill out the age
+        </mat-error> 
+      </mat-form-field>
+  </div>
+
+  <div>
+      <mat-form-field>
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone">
+        <mat-error *ngIf="registerSitterForm.controls.phone.errors?.required && registerSitterForm.controls.phone.touched">
+            Please fill out the phone
+        </mat-error> 
+      </mat-form-field>
+  </div>
+
+  <div>
+      <mat-form-field>
+        <mat-label>Postal code</mat-label>
+        <input matInput formControlNamee="postalcode">
+        <mat-error *ngIf="registerSitterForm.controls.postalcode.errors?.required && registerSitterForm.controls.postalcode.touched">
+            Please fill out the postal code
+        </mat-error> 
+      </mat-form-field>
+    </div>
+
+    <div>
+        <button type="submit" mat-button>Register</button>  
+    </div> 
+</form>

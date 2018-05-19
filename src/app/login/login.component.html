@@ -1,0 +1,32 @@
+<form [formGroup]="loginForm" novalidate 
+  (submit)="onSubmitLogin(loginForm)">
+  
+  <div>
+    <mat-form-field>
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username">
+      <mat-error *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
+        Please fill out the username
+      </mat-error>
+    </mat-form-field>
+    
+      <!-- <input formControlName="username"> -->
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label id="passwordlabel">Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-error *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched">
+        Please fill out the password
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+ <div>
+    <button type="submit" mat-button>Login</button>  
+  </div> 
+
+  <!-- <p>Form value: {{ loginForm.value | json }}</p>
+  <p>Is form valid: {{ loginForm.valid | json }}</p> -->
+</form>
