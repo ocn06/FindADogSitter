@@ -1,5 +1,5 @@
 export class Sitter {
-    public id: String;
+    public id: number;
     public firstname: String;
     public lastname: String; 
     public age: number;

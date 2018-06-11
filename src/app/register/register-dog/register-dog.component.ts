@@ -1,20 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../../store/store';
 import { Dog } from '../../entities/dog';
+import { UsersService } from '../../users.service';
+import { UsersActions } from '../../users.actions';
+import { empty } from 'rxjs/Observer';
+import { RegisterSitterComponent } from 'src/app/register/register-sitter/register-sitter.component';
 
+let id = 2;
 
 @Component({
   selector: 'app-register-dog',
   templateUrl: './register-dog.component.html',
   styleUrls: ['./register-dog.component.css']
 })
+
 export class RegisterDogComponent implements OnInit {
   private registerDogForm;
+
+  private isDog;
   
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, 
+    private router: Router,
+    private ngRedux: NgRedux<IAppState>,
+    private usersActions: UsersActions,
+    private usersService: UsersService) { }
   
   ngOnInit() {
+    // Subscribe to the users part of the store.
+    this.ngRedux.select(state => state.users).subscribe(res => {
+      this.isDog = res.isDog;
+      console.log(this.isDog);
+    });
+    
     this.registerDogForm = this.fb.group({
       name: ['', Validators.required],
       breed: ['', Validators.required],
@@ -25,14 +45,21 @@ export class RegisterDogComponent implements OnInit {
   }
 
   onSubmit(registerDogForm) {
-    // if (form is valid) {
+    if (registerDogForm != empty) {
       let dog: Dog = registerDogForm.value;
-      //this.data.addDog(dog);
+      dog.id = id;
+      //Test: calling the ws.
+      this.usersService.createDog(dog).subscribe( newDog => {
+        console.log(newDog);
+      });
+      this.usersActions.addDog(dog);
+      id++;
       this.router.navigate(['users-list/dogs']);
-      
-    // }
-    console.log(registerDogForm.value);
+      console.log(registerDogForm.value);
+    }
+    else {
+      // Show errors and not send a request.
+        alert("Fill out the fields, please!");
+      }
   }
-
 }
-  

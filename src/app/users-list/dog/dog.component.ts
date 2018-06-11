@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Dog } from '../../entities/dog';
 import { Router } from '@angular/router';
+import { NgRedux } from '@angular-redux/store/lib/src/components/ng-redux';
+import { IAppState } from 'src/app/store/store';
+
+import { Dog } from '../../entities/dog';
+
+import { UsersService } from '../../users.service';
+import { UsersActions } from 'src/app/users.actions';
+
 
 @Component({
   selector: 'app-dog',
@@ -8,11 +15,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./dog.component.css']
 })
 export class DogComponent implements OnInit {
-  /* @input() dogInput:  */
+  private dogs: Dog[];
 
-  constructor(private router: Router) { }
+  constructor(private ngRedux: NgRedux<IAppState>, private usersService: UsersService,
+  private usersAction: UsersActions) { }
 
   ngOnInit() {
-  }
+    let resultFromWs = this.usersService.getDogs();
 
+    this.usersAction.getDogs(); 
+    this.usersService.getDogs().subscribe( (resultFromWs: any[]) => {
+      //   this.babies = resultFromWs.filter(baby => baby.customerId === '3');
+  
+      //   console.log(resultFromWs);
+      });
+
+    this.ngRedux.select(state => state.users).subscribe(users => {
+      this.dogs = users.dogs;
+    });
+  }
+  onDelete(dog: Dog) {
+    // call the service that calls the ws.
+    this.usersService.deleteDog(dog).subscribe(deletedDog => {
+      console.log(deletedDog);
+    });
+  }
 }

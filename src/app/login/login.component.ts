@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
 
         let x = this.authService.login();
 
-
         this.authService.login().subscribe(() => {
         console.log("Now I am logged in!");
 

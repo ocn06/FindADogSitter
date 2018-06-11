@@ -1,3 +1,12 @@
-<p>
-  sitter works!
-</p>
+<mat-form-field>
+  <input matInput placeholder="Search" [(ngModel)]="search">
+</mat-form-field>
+
+<br>
+
+<div *ngFor="let sitter of sitters; let i=index">
+    <br>
+    Name: {{sitter.firstname}} {{sitter.lastname}} <br>
+    Phone: {{sitter.phone}} <br> Postal code: {{sitter.postalcode}}
+    <button (click)="onDelete(sitter)" mat-button>Delete</button>
+  </div>

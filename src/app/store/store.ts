@@ -6,8 +6,10 @@ import { Sitter } from '../entities/sitter';
 
 export class UsersState {
  isDog: boolean;
+ isSitter: boolean;
+ 
  dogs: Dog[];
- sitters?: Sitter[];
+ sitters: Sitter[];
 }
 export class IAppState {
  users?: UsersState;

@@ -44,7 +44,7 @@
   <div>
       <mat-form-field>
         <mat-label>Postal code</mat-label>
-        <input matInput formControlNamee="postalcode">
+        <input matInput formControlName="postalcode">
         <mat-error *ngIf="registerSitterForm.controls.postalcode.errors?.required && registerSitterForm.controls.postalcode.touched">
             Please fill out the postal code
         </mat-error> 
@@ -52,6 +52,6 @@
     </div>
 
     <div>
-        <button type="submit" mat-button>Register</button>  
+        <button type="submit" [disabled]="registerSitterForm.invalid" mat-button>Register</button> 
     </div> 
 </form>
