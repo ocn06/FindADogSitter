@@ -3,33 +3,36 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Dog } from "./entities/dog";
 import { Sitter } from "./entities/sitter";
 
+const apiV1 = "http://angular2api1.azurewebsites.net/api/internships";
+const apiV2 = "http://angular2api2.azurewebsites.net/api/internships";
+const options = {
+  headers:new HttpHeaders({ 
+    'Access-Control-Allow-Origin':'*'
+})};
+
 //CRUD FUNCTIONALITIES
 //API
 
 @Injectable()
 export class UsersService {
   constructor(private http: HttpClient) {
-   /*  const httpOptions = {
-      headers: new HttpHeaders({ 
-        'Access-Control-Allow-Origin':'*',
-      })
-    }; */
   }
 
   //DOG
-  updateDog() {
+  updateDog(dog: Dog) {
+    /* return this.http.put(`${api1}/update${dog.id}`, options); */
   }
 
   deleteDog(dog: Dog) {
-    return this.http.delete("http://angular2api2.azurewebsites.net/api/internships/" + dog.id);
+    return this.http.post(`${apiV1}/delete/${dog.id}`, options);
   }
 
   createDog(dog: Dog) {
-      return this.http.post("http://angular2api2.azurewebsites.net/api/internships", dog);
+    return this.http.post(`${apiV2}`, dog, options);
   }
 
   getDogs() {
-    return this.http.get("http://angular2api1.azurewebsites.net/api/internships/getall");
+    return this.http.get(`${apiV1}/getall`, options);
   }
 
   //SITTER
@@ -37,14 +40,18 @@ export class UsersService {
   }
 
   deleteSitter(sitter: Sitter) {
-    return this.http.delete("http://angular2api2.azurewebsites.net/api/internships/" + sitter.id);
-  }
+    return this.http.post("http://angular2api2.azurewebsites.net/apiV1/internships/" + sitter.id, {
+      headers:new HttpHeaders({ 
+        'Access-Control-Allow-Origin':'*',
+    })
+  });
+}
 
   createSitter(sitter: Sitter) {
-    return this.http.post("http://angular2api2.azurewebsites.net/api/internships", sitter);
+    return this.http.post("http://angular2api2.azurewebsites.net/apiV1/internships", sitter);
   }
 
   getSitters() {
-    return this.http.get("http://angular2api1.azurewebsites.net/api/internships/getall");
+    return this.http.get("http://angular2api1.azurewebsites.net/apiV1/internships/getall");
   }
 }

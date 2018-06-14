@@ -17,7 +17,6 @@ export class UsersListComponent implements OnInit {
     if (!this.selected) {
       return false;
     }
-
     return (this.selected === name);
   }
 

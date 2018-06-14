@@ -1,5 +1,4 @@
-export class Dog {  [x: string]: any;
-
+export class Dog {
     public id: number;
     public name: String;
     public breed: String;

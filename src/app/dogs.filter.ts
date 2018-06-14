@@ -7,11 +7,10 @@ export class FilterDogs implements PipeTransform {
      transform(items: Dog[], args: string): any {
      
       if (args && items.length > 0) {
-
        let itemsFound = items.filter(
-         item => item.firstname && 
-         item.firstname.toLowerCase().includes(args.toLowerCase()) ||
-          item.firstname && item.age && (item.firstname.toLowerCase() + " " + item.age).includes(args.toLowerCase())
+         item => item.name && 
+         item.name.toLowerCase().includes(args.toLowerCase()) ||
+          item.name && item.age && (item.name.toLowerCase() + " " + item.age).includes(args.toLowerCase())
        );
        if (itemsFound && itemsFound.length > 0 ){
          return itemsFound;

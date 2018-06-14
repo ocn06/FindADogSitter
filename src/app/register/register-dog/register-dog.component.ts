@@ -6,7 +6,6 @@ import { IAppState } from '../../store/store';
 import { Dog } from '../../entities/dog';
 import { UsersService } from '../../users.service';
 import { UsersActions } from '../../users.actions';
-import { empty } from 'rxjs/Observer';
 import { RegisterSitterComponent } from 'src/app/register/register-sitter/register-sitter.component';
 
 let id = 2;
@@ -19,7 +18,6 @@ let id = 2;
 
 export class RegisterDogComponent implements OnInit {
   private registerDogForm;
-
   private isDog;
   
   constructor(private fb: FormBuilder, 
@@ -45,21 +43,13 @@ export class RegisterDogComponent implements OnInit {
   }
 
   onSubmit(registerDogForm) {
-    if (registerDogForm != empty) {
-      let dog: Dog = registerDogForm.value;
-      dog.id = id;
-      //Test: calling the ws.
-      this.usersService.createDog(dog).subscribe( newDog => {
-        console.log(newDog);
-      });
+    let dog: Dog = registerDogForm.value;
+    dog.id = id;
+    this.usersService.createDog(dog).subscribe(newDog => {
+      console.log('Created dog', newDog);
+    });
       this.usersActions.addDog(dog);
       id++;
       this.router.navigate(['users-list/dogs']);
-      console.log(registerDogForm.value);
-    }
-    else {
-      // Show errors and not send a request.
-        alert("Fill out the fields, please!");
-      }
   }
 }

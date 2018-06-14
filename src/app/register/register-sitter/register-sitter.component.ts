@@ -38,25 +38,19 @@ export class RegisterSitterComponent implements OnInit {
       age: ['', Validators.required],
       postalcode: ['', Validators.required],
       phone: ['', Validators.required]
-    })
+    });
   }
   
   onSubmit(registerSitterForm) {
-    if (registerSitterForm === null) {
-      let sitter: Sitter = registerSitterForm.value;
-      sitter.id = id;
-      //Test: calling the ws.
-      this.usersService.createSitter(sitter).subscribe( newSitter => {
-        console.log(newSitter);
-      });
-      this.usersActions.addSitter(sitter);
-      id++;
-      this.router.navigate(['users-list/sitters']);
-      console.log(registerSitterForm.value);
-    }
-    else {
-      // Show errors and not send a request.
-        alert("Fill out the fields, please!");
-      }
+    let sitter: Sitter = registerSitterForm.value;
+    sitter.id = id;
+    //Test: calling the ws.
+    this.usersService.createSitter(sitter).subscribe(newSitter => {
+      console.log(newSitter);
+    });
+    this.usersActions.addSitter(sitter);
+    id++;
+    this.router.navigate(['users-list/sitters']);
+    console.log(registerSitterForm.value);
   }
 }
