@@ -27,11 +27,11 @@ export class RegisterDogComponent implements OnInit {
     private usersService: UsersService) { }
   
   ngOnInit() {
-    // Subscribe to the users part of the store.
+    /* // Subscribe to the users part of the store.
     this.ngRedux.select(state => state.users).subscribe(res => {
       this.isDog = res.isDog;
       console.log(this.isDog);
-    });
+    }); */
     
     this.registerDogForm = this.fb.group({
       name: ['', Validators.required],
