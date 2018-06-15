@@ -6,7 +6,7 @@ import { Sitter } from "./entities/sitter";
 const apiV1 = "http://angular2api1.azurewebsites.net/api/internships";
 const apiV2 = "http://angular2api2.azurewebsites.net/api/internships";
 const options = {
-  headers:new HttpHeaders({ 
+  headers: new HttpHeaders ({ 
     'Access-Control-Allow-Origin':'*'
 })};
 
@@ -40,18 +40,14 @@ export class UsersService {
   }
 
   deleteSitter(sitter: Sitter) {
-    return this.http.post("http://angular2api2.azurewebsites.net/apiV1/internships/" + sitter.id, {
-      headers:new HttpHeaders({ 
-        'Access-Control-Allow-Origin':'*',
-    })
-  });
-}
+    return this.http.post(`${apiV1}/delete/${sitter.id}`, options);
+  }
 
   createSitter(sitter: Sitter) {
-    return this.http.post("http://angular2api2.azurewebsites.net/apiV1/internships", sitter);
+    return this.http.post(`${apiV2}`, sitter, options);
   }
 
   getSitters() {
-    return this.http.get("http://angular2api1.azurewebsites.net/apiV1/internships/getall");
+    return this.http.get(`${apiV1}/getall`, options);
   }
 }

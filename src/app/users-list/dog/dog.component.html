@@ -8,6 +8,6 @@
   <div *ngFor="let dog of dogs; let i=index">
     <br>
     Name: {{dog.name}} <br> Breed: {{dog.breed}} <br>
-    Age: {{dog.age}} <br> Postal code: {{dog.postalcode}} {{dog.id}}
+    Age: {{dog.age}} <br> Postal code: {{dog.postalcode}}
     <button (click)="onDelete(dog)" mat-button>Delete</button>
   </div>
