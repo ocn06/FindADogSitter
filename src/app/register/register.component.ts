@@ -35,18 +35,27 @@ export class RegisterComponent implements OnInit {
 
     else if (name === "dog") {
       // Subscribe to the users part of the store.
+      //this.usersActions.setDogType = this.isDog;
+      //UsersActions.SET_SITTER_TYPE = "false";
       this.ngRedux.select(state => state.users).subscribe(res => {
+        /* UsersActions.SET_DOG_TYPE = "true"; */
         this.isDog = res.isDog;
         console.log("Dog " + this.isDog);
       });
+      /* //FORSØG 2
+      return (this.selected === name); */
     }
 
     else if (name === "sitter") {
       // Subscribe to the users part of the store.
+      /* UsersActions.SET_SITTER_TYPE = "true"; */
+      //UsersActions.SET_DOG_TYPE = "false"; 
       this.ngRedux.select(state => state.users).subscribe(res => {
         this.isSitter = res.isSitter;
         console.log("Sitter " + this.isSitter);
       });
+      /* //FORSØG 2
+      return (this.selected === name); */
     }
 
     return (this.selected === name);

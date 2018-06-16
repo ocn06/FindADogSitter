@@ -4,7 +4,7 @@
   <div>
     <mat-form-field>
       <mat-label>Name</mat-label>
-      <input matInput formControlName="name">
+      <input id="name" matInput formControlName="name">
       <mat-error *ngIf="registerDogForm.controls.name.errors?.required && registerDogForm.controls.name.touched">
           Please fill out the name
       </mat-error> 
@@ -14,7 +14,7 @@
   <div>
       <mat-form-field>
         <mat-label>Breed</mat-label>
-        <input matInput formControlName="breed">
+        <input id="breed" matInput formControlName="breed">
         <mat-error *ngIf="registerDogForm.controls.breed.errors?.required && registerDogForm.controls.breed.touched">
             Please fill out the breed
         </mat-error> 
@@ -24,7 +24,7 @@
   <div>
       <mat-form-field>
         <mat-label>Age</mat-label>
-        <input matInput formControlName="age">
+        <input id="age" matInput formControlName="age">
         <mat-error *ngIf="registerDogForm.controls.age.errors?.required && registerDogForm.controls.age.touched">
             Please fill out the age
         </mat-error> 
@@ -34,7 +34,7 @@
   <div>
       <mat-form-field>
         <mat-label>Gender</mat-label>
-        <input matInput formControlName="gender">
+        <input id="gender" matInput formControlName="gender">
         <mat-error *ngIf="registerDogForm.controls.gender.errors?.required && registerDogForm.controls.gender.touched">
             Please fill out the gender
         </mat-error> 
@@ -44,7 +44,7 @@
   <div>
       <mat-form-field>
         <mat-label>Postal code</mat-label>
-        <input matInput formControlName="postalcode">
+        <input id="postalcode" matInput formControlName="postalcode">
         <mat-error *ngIf="registerDogForm.controls.postalcode.errors?.required && registerDogForm.controls.postalcode.touched">
             Please fill out the postal code
         </mat-error> 
@@ -52,7 +52,7 @@
     </div>
 
     <div>
-        <button type="submit" [disabled]="registerDogForm.invalid" mat-button>Register</button>  
+        <button type="e2e-submit" [disabled]="registerDogForm.invalid" mat-button>Register</button>  
     </div> 
 
 </form>
