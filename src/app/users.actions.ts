@@ -20,8 +20,10 @@ export class UsersActions {
    static GET_SITTERS: string = 'ADD_SITTERS';
    static GET_SITTERS_SUCCESS: string = 'GET_SITTERS_SUCCESS';
    static GET_DOGS_SUCCESS: string = 'GET_DOGS_SUCCESS';
-   //static GET_USERS_FAILURE: string = 'GET_USERS_FAILURE'; */
-
+   static GET_DOGS_FAILURE: string = 'GET_DOGS_FAILURE'; 
+   static GET_SITTERS_FAILURE: string = 'GET_SITTERS_FAILURE'; 
+   static DELETE_DOG: string = 'DELETE_DOG';
+   static DELETE_SITTER: string = 'DELETE_SITTER';
 
    getDogs() {
      this.ngRedux.dispatch({
@@ -53,6 +55,8 @@ export class UsersActions {
      });
    }
 
+
+   //SITTER
    getSitters() {
     this.ngRedux.dispatch({
       type: UsersActions.GET_SITTERS
@@ -72,5 +76,12 @@ export class UsersActions {
         type: UsersActions.ADD_SITTER,
         payload: sitter
       });
+   }
+
+   deleteSitter (sitter: Sitter) : void {
+     this.ngRedux.dispatch({
+       type: UsersActions.DELETE_SITTER,
+         payload: sitter
+     });
    }
 }

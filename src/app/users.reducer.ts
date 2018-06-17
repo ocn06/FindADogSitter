@@ -58,12 +58,22 @@ export function usersReducer(state: UsersState = INITIAL_STATE, action: any) {
 
       return { ...state, dogs: [...state.dogs, action.payload] };
 
-    //NOT ALLOWED?
-    //state.dogs.push(action.payload);
-    //return state;
+      //NOT ALLOWED?
+      //state.dogs.push(action.payload);
+      //return state;
+
+    case UsersActions.SET_DOG_TYPE: // action.payload is isdog: boolean
+
+    state.isDog = action.payload;
+    return state;
+
+    //return Object.assign({}, state, {isdog: action.payload, foo: 1});
+    //return tassign(state, { isdog: action.payload});
+
+
+    
 
     //SITTER
-
     case UsersActions.GET_SITTERS:
       return state;
 
@@ -74,17 +84,15 @@ export function usersReducer(state: UsersState = INITIAL_STATE, action: any) {
     case UsersActions.ADD_SITTER: // action.payload is sitter: sitter
       return tassign(state, { sitters: [...state.sitters, action.payload] });
 
-    case UsersActions.SET_DOG_TYPE: // action.payload is isdog: boolean
-
-      state.isDog = action.payload;
-      return state;
-
-    // return Object.assign({}, state, {isdog: action.payload, foo: 1});
-    //return tassign(state, { isdog: action.payload});
-
     case UsersActions.SET_SITTER_TYPE: // action.payload is issitter: boolean
       state.isSitter = action.payload;
       return state;
+
+    case UsersActions.DELETE_SITTER: 
+    let sitters = [...state.sitters];
+    let index = sitters.findIndex(sitter => sitter.id === action.payload.id);
+
+    sitters.splice(index, 1);
 
     default:
       return state;

@@ -31,7 +31,13 @@ export class SitterComponent implements OnInit {
       this.sitters = users.sitters;
 
       /* this.sitters.forEach(sitter => ) */
-    })
+    });
   }
-
+  onDelete(sitter: Sitter) {
+    // call the service that calls the ws.
+    this.usersService.deleteSitter(sitter).subscribe(deletedSitter => {
+     // this.usersAction.deleteSitter(sitter);    VIRKER IKKE
+      console.log(deletedSitter);
+    });
+  }
 }
