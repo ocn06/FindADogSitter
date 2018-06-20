@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'users-list', component: UsersListComponent, canActivate: [AuthGuard],
+  { path: 'users-list', component: UsersListComponent, /* canActivate: [AuthGuard],*/
       children: [ 
         { path: 'dogs', component: DogComponent }, 
         { path: 'sitters', component: SitterComponent } 

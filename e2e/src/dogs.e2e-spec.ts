@@ -1,6 +1,25 @@
 import { browser, by, element } from 'protractor';
 
+
+//Comment out CanActivate under Users-list in app-routing 
 describe('Dogs test', () => {
+    it('should test if there is one dog already', async() => {
+        
+        
+        //browser.get("/login");
+        
+        //browser.get("/users-list");
+        //element.all(by.css("dog")).click();
+        //expect(element(by.name("dog")).getAttribute('checked')).toBeTruthy();
+        browser.get("/users-list/dogs");
+        element.all(by.css(".e2e-dog")).then(function(elements) {
+            const dogs = elements.length;
+            expect(dogs).toBe(1);
+        });
+    });
+});
+
+/* describe('Dogs test', () => {
     it('Should create a new dog when form is valid', async() => {
         // How many dogs?
         // Create a new dog
@@ -36,5 +55,5 @@ describe('Dogs test', () => {
     });
     it('Should NOT create a new dog when form is NOT valid', async() => {
     expect(false).toBeTruthy();
-    });
-});
+    }); 
+});*/

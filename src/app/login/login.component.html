@@ -5,7 +5,7 @@
   <div>
     <mat-form-field>
       <mat-label>Username</mat-label>
-      <input matInput formControlName="username">
+      <input matInput id="username" formControlName="username">
       <mat-error *ngIf="loginForm.controls.username.errors?.required && loginForm.controls.username.touched">
         Please fill out the username
       </mat-error>
@@ -15,7 +15,7 @@
   <div>
     <mat-form-field>
       <mat-label id="passwordlabel">Password</mat-label>
-      <input matInput type="password" formControlName="password">
+      <input matInput id="password" type="password" formControlName="password">
       <mat-error *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched">
         Please fill out the password
       </mat-error>
