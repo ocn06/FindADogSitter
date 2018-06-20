@@ -21,14 +21,12 @@ export class DogComponent implements OnInit {
   private usersAction: UsersActions) { }
 
   ngOnInit() {
-    let resultFromWs = this.usersService.getDogs();
-
     this.usersAction.getDogs(); 
-    this.usersService.getDogs().subscribe( (resultFromWs: any[]) => {
+    this.usersService.getDogs().subscribe((dogs: any[]) => {
+      console.log('DOGS', dogs)
       //   this.babies = resultFromWs.filter(baby => baby.customerId === '3');
-  
       //   console.log(resultFromWs);
-      });
+    });
 
     this.ngRedux.select(state => state.users).subscribe(users => {
       this.dogs = users.dogs;

@@ -10,6 +10,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatMenuModule } from '@angular/material/menu';
 import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
+import { createLogger } from "redux-logger";
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from 'selenium-webdriver/http';
 
@@ -62,10 +63,19 @@ import { UsersService } from './users.service';
 })
 
 export class AppModule { 
-  constructor(private ngRedux: NgRedux<IAppState>, 
-  private devTool: DevToolsExtension, 
-  private ngReduxRouter: NgReduxRouter) {
+  constructor(
+    private ngRedux: NgRedux<IAppState>, 
+    private devTool: DevToolsExtension, 
+    private ngReduxRouter: NgReduxRouter) {
+
+    const middleware = [
+      createLogger({ level: 'info', collapsed: true })
+    ];
+
     this.ngRedux.configureStore(
-      rootReducer,{});
+      rootReducer,
+      {},
+      middleware,
+      [devTool.isEnabled() ? devTool.enhancer() : f => f]);
   }
 }
