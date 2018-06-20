@@ -14,10 +14,7 @@ export class AuthService {
   redirectUrl: string;
 
   login(): Observable<boolean> {
-    // Make an http request, send username and password, get a user object back
-    // from the server, and save the user object in this class
     return Observable.of(true).delay(1000).do(val => {
-      // this.loggedInUser = //what came back from the server.
       this.isLoggedIn = true;
     });
   }

@@ -13,7 +13,6 @@ export class AuthGuard implements CanActivate {
     let url: string = state.url;
     console.log(url);
     return this.checkLogin(url);
-    //return true;
   }
 
   checkLogin(url: string): boolean {

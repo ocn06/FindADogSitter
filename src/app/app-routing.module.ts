@@ -10,7 +10,8 @@ import { AuthGuard } from './auth-guard';
 import { DogComponent } from './users-list/dog/dog.component';
 import { SitterComponent } from './users-list/sitter/sitter.component';
 
-
+//HOW TO NAVIGATE
+//PASS TO RouterModule.forRoot method to configure the router
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },

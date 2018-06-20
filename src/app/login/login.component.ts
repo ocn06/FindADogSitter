@@ -19,19 +19,16 @@ export class LoginComponent implements OnInit {
 
   onSubmitLogin(loginForm) {
     console.log(loginForm);
-    // Send a request to the server
     // Try to login
     if (loginForm.controls.username.value === "olivia" && loginForm.controls.password.value === "p") {
-          // Send an http request
-
         console.log("valid");
 
-        let x = this.authService.login();
+        let user = this.authService.login();
 
         this.authService.login().subscribe(() => {
         console.log("Now I am logged in!");
 
-        // How to navigate in typescript code.
+        // How to navigate in typescript code
         this.router.navigate(['users-list']);
         })
     }

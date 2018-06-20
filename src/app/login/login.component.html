@@ -1,3 +1,4 @@
+<!-- the form is not to be validated on submit -->
 <form [formGroup]="loginForm" novalidate 
   (submit)="onSubmitLogin(loginForm)">
   
@@ -24,7 +25,4 @@
  <div>
     <button type="submit" mat-button>Login</button>  
   </div> 
-
-  <!-- <p>Form value: {{ loginForm.value | json }}</p>
-  <p>Is form valid: {{ loginForm.valid | json }}</p> -->
 </form>
