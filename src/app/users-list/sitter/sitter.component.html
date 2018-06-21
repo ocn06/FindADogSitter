@@ -1,10 +1,7 @@
-<mat-form-field>
-  <input matInput placeholder="Search" [(ngModel)]="search">
-</mat-form-field>
 
 <br>
 
-<div *ngFor="let sitter of sitters; let i=index">
+<div *ngFor="let sitter of sitters | filterSitters: search">
     <br>
     Name: {{sitter.firstname}} {{sitter.lastname}} <br>
     Phone: {{sitter.phone}} <br> Postal code: {{sitter.postalcode}}

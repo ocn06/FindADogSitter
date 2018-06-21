@@ -30,6 +30,8 @@ import { AuthGuard } from './auth-guard';
 import { AuthService } from './auth.service';
 import { UsersActions } from '../app/users.actions';
 import { UsersService } from './users.service';
+import { FilterDogs } from 'src/app/dogs.filter';
+import { FilterSitter } from 'src/app/sitter.filter';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { UsersService } from './users.service';
     RegisterDogComponent,
     RegisterSitterComponent,
     HomeComponent,
-    SitterComponent
+    SitterComponent,
+    FilterDogs,
+    FilterSitter
   ],
   imports: [
     BrowserModule,

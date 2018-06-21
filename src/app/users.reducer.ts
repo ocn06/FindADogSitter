@@ -34,44 +34,16 @@ export function usersReducer(state: UsersState = INITIAL_STATE, action: any) {
       //action.payload: an array of users
       return tassign(state, { dogs: action.payload });
 
-    /*   // return state;
-    case UsersActions.GET_USERS_FAILURE: // The ws failed or something else bad
-      return state; */
-
-
-    /*        case UsersActions.ADD_RATING:
-            // action.payload: {id, rating}
-            let sitters = [...state.sitters];
-            let index = sitters.findIndex(dog => dog.id === action.payload.id);
-            
-            let newRatings = [...sitters[index].ratings];
-    
-            //NOT ALLOWED??
-            newRatings.push(action.payload.rating);
-            sitters[index].ratings = newRatings;
-      
-            return state; */
-
     case UsersActions.ADD_DOG: // action.payload is dog: dog
-      // How to add an object to an array of objects without modifying the existing array?
-      //return tassign(state, {dogs: [...state.dogs, action.payload]});
-
       return { ...state, dogs: [...state.dogs, action.payload] };
-
-      //NOT ALLOWED?
-      //state.dogs.push(action.payload);
-      //return state;
 
     case UsersActions.SET_DOG_TYPE: // action.payload is isdog: boolean
 
-    state.isDog = action.payload;
-    return state;
-
-    //return Object.assign({}, state, {isdog: action.payload, foo: 1});
-    //return tassign(state, { isdog: action.payload});
+      state.isDog = action.payload;
+      return state;
 
 
-    
+
 
     //SITTER
     case UsersActions.GET_SITTERS:
@@ -88,14 +60,14 @@ export function usersReducer(state: UsersState = INITIAL_STATE, action: any) {
       state.isSitter = action.payload;
       return state;
 
-    case UsersActions.DELETE_SITTER: 
-    let sitters = [...state.sitters];
-    let index = sitters.findIndex(sitter => sitter.id === action.payload.id);
+    case UsersActions.DELETE_SITTER:
+      let sitters = [...state.sitters];
+      let index = sitters.findIndex(sitter => sitter.id === action.payload.id);
 
-    sitters.splice(index, 1);
+      sitters.splice(index, 1);
 
     default:
       return state;
   }
 }
-  
+

@@ -30,19 +30,11 @@ export class UsersActions {
        type: UsersActions.GET_DOGS
      });
    }
-   
-    /* addRating(id: string, rating: number) {
-      this.ngRedux.dispatch({
-        type: UsersActions.ADD_RATING,
-        payload: { rating, id }
-      });
-    } */
 
    setDogType(isDog: boolean): void {
     this.ngRedux.dispatch({
        type: UsersActions.SET_DOG_TYPE,
        payload: isDog
-      //  payload: { isDog, something: 1, } // passing multiple parameters
      });
    }
 
@@ -50,8 +42,6 @@ export class UsersActions {
      this.ngRedux.dispatch({
        type: UsersActions.ADD_DOG,
        payload: dog
-       //Example of passing multiple parameters to reducer by passing an object
-       //payload: {dog, sitterName}
      });
    }
 
@@ -67,7 +57,6 @@ export class UsersActions {
     this.ngRedux.dispatch({
        type: UsersActions.SET_SITTER_TYPE,
        payload: isSitter
-      //  payload: { isSitter, something: 1, } // passing multiple parameters
      });
    }
 

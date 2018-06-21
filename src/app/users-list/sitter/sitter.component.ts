@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgRedux } from '@angular-redux/store/lib/src/components/ng-redux';
 import { IAppState } from 'src/app/store/store';
@@ -13,7 +13,8 @@ import { Sitter } from '../../entities/sitter';
 })
 export class SitterComponent implements OnInit {
   private sitters: Sitter[];
-
+  @Input()
+  public search: string;
   constructor(private ngRedux: NgRedux<IAppState>, private usersService: UsersService,
     private usersAction: UsersActions) { }
 

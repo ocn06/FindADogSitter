@@ -26,12 +26,6 @@ export class RegisterSitterComponent implements OnInit {
     private usersService: UsersService) { }
 
   ngOnInit() {
-    /*  // Subscribe to the users part of the store.
-     this.ngRedux.select(state => state.users).subscribe(res => {
-      this.isSitter = res.isSitter;
-      console.log(this.isSitter);
-    }); */
-
     this.registerSitterForm = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -44,7 +38,6 @@ export class RegisterSitterComponent implements OnInit {
   onSubmit(registerSitterForm) {
     let sitter: Sitter = registerSitterForm.value;
     sitter.id = id;
-    //Test: calling the ws.
     this.usersService.createSitter(sitter).subscribe(newSitter => {
       console.log(newSitter);
     });

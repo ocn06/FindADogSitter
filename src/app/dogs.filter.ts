@@ -10,13 +10,15 @@ export class FilterDogs implements PipeTransform {
        let itemsFound = items.filter(
          item => item.name && 
          item.name.toLowerCase().includes(args.toLowerCase()) ||
-          item.name && item.age && (item.name.toLowerCase() + " " + item.age).includes(args.toLowerCase())
+          item.name && item.postalcode && (item.name.toLowerCase() + " " + item.postalcode).includes(args.toLowerCase())
        );
        if (itemsFound && itemsFound.length > 0 ){
          return itemsFound;
        }
-       return [-1]; // to display error message (none found) in view.
+       return -1; // to display error message (none found) in view.
      }
    return [];
  }
 }
+
+

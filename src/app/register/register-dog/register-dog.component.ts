@@ -18,7 +18,6 @@ let id = 2;
 
 export class RegisterDogComponent implements OnInit {
   private registerDogForm;
-  private isDog;
   
   constructor(private fb: FormBuilder, 
     private router: Router,
@@ -27,12 +26,6 @@ export class RegisterDogComponent implements OnInit {
     private usersService: UsersService) { }
   
   ngOnInit() {
-    /* // Subscribe to the users part of the store.
-    this.ngRedux.select(state => state.users).subscribe(res => {
-      this.isDog = res.isDog;
-      console.log(this.isDog);
-    }); */
-    
     this.registerDogForm = this.fb.group({
       name: ['', Validators.required],
       breed: ['', Validators.required],

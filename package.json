@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "core-js": "^2.5.4",
+    "deep-freeze": "0.0.1",
     "generate-gitignore": "^0.2.6",
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.18.0",

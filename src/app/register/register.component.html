@@ -1,18 +1,9 @@
 <div>
     <p>Choose if you want to register as a dogsitter or want to register your dog</p>
-
-<!-- FORSØG 1  kan ikke blive true/false, men kan skifte view-->
     <mat-radio-group>
         <mat-radio-button value="dog" (click)="register('dog')" routerLink="dog">Dog</mat-radio-button>
         <mat-radio-button value="sitter" (click)="register('sitter')" routerLink="sitter">Sitter</mat-radio-button>
     </mat-radio-group>
-
-    <!-- FORSØG 2  kan blive true/men aldrig false-->
-    <!-- Dispatch actions -->
-    <!-- <mat-radio-group>
-        <mat-radio-button value="dog" (click)="usersActions.setDogType(true)" routerLink="dog">Dog</mat-radio-button>
-        <mat-radio-button value="sitter" (click)="usersActions.setSitterType(true)" routerLink="sitter">Sitter</mat-radio-button>
-    </mat-radio-group> -->
 </div>
 
 <div *ngIf="isSelected('dog')">
